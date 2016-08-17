@@ -44,3 +44,19 @@ kubectl exec -it <pod> -- bash -c 'EMAIL=fred@fred.com DOMAINS=example.com foo.e
  - NAMESPACE - the namespace under which the secrets should be available
  - CRON_FREQUENCY - the 5-part frequency of the cron job. Default is a random
    time in the range `0-59 0-23 1-27 * *`
+
+
+## NGINX
+Be sure to launch the k8s rc and svc first.
+
+```
+# nginx.conf
+server {
+    listen 80 default_server;
+    server_name _;
+
+    location /.well-known/acme-challenge/ {
+        proxy_pass http://k8s-certbot;
+    }
+}
+```
