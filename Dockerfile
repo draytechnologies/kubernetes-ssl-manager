@@ -1,13 +1,16 @@
-FROM nginx
+FROM nginx:1.11
 
 ENV KUBECTL_VERSION v1.3.0
 
-RUN apt-get update && apt-get install -y git wget cron bc
+RUN apt-get update && apt-get install -y wget cron bc
+
+RUN wget http://nginx.org/packages/keys/nginx_signing.key
+RUN cat nginx_signing.key | apt-key add -
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >>  /etc/apt/sources.list
+RUN apt-get update && apt-get install -y certbot -t jessie-backports
 
 RUN mkdir -p /letsencrypt/challenges/.well-known/acme-challenge
-RUN git clone https://github.com/certbot/certbot /letsencrypt/app
-WORKDIR /letsencrypt/app
-RUN ./letsencrypt-auto; exit 0
+RUN certbot-auto; exit 0
 
 # You should see "OK" if you go to http://<domain>/.well-known/acme-challenge/health
 
@@ -31,8 +34,6 @@ ADD refresh_certs.sh /letsencrypt/
 ADD start.sh /letsencrypt/
 
 ADD nginx/letsencrypt.conf /etc/nginx/snippets/letsencrypt.conf
-
-RUN ln -s /root/.local/share/letsencrypt/bin/letsencrypt /usr/local/bin/letsencrypt
 
 WORKDIR /letsencrypt
 
