@@ -60,3 +60,10 @@ server {
     }
 }
 ```
+
+
+# Steps
+
+1. Modify replication controller with the correct parameters
+2. Launch k8s rc and svc
+3. Modify nginx with proxy pass for the challenge
