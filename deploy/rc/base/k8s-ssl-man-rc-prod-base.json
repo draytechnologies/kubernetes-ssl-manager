@@ -36,7 +36,7 @@
               },
               {
                 "name": "NAMESPACE",
-                "value": "stage"
+                "value": "DEPLOY_TYPE"
               },
               {
                 "name": "LETSENCRYPT_ENDPOINT",
