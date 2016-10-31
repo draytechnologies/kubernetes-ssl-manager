@@ -67,3 +67,10 @@ server {
 1. Modify replication controller with the correct parameters
 2. Launch k8s rc and svc
 3. Modify nginx with proxy pass for the challenge
+
+
+# Cert refresh process
+1. Generate new certs
+2. scale rc's up by 1
+3. delete all the old pods
+4. scale rc back down to original replica count 
