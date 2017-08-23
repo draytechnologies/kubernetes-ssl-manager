@@ -20,7 +20,7 @@ build:
 .PHONY: push
 push:
 	docker tag $(PROJECT_NAME):$(VERSION) us.gcr.io/$(PROJECT_ID)/$(PROJECT_NAME):$(VERSION) && \
-		gcloud docker push us.gcr.io/$(PROJECT_ID)/$(PROJECT_NAME):$(VERSION)
+		gcloud docker -- push us.gcr.io/$(PROJECT_ID)/$(PROJECT_NAME):$(VERSION)
 
 .PHONY: rc
 rc: context
