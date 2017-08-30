@@ -28,11 +28,11 @@
             "env": [
               {
                 "name": "DOMAINS",
-                "value": "app.paradesystems.com paradesystems.com"
+                "value": "api.lc.parade.ai api.email.parade.ai parade.ai api.geodude.parade.ai api.census.parade.ai api.source-query.parade.ai"
               },
               {
                 "name": "EMAIL",
-                "value": "anthony@draytechnologies.com"
+                "value": "anthony@parade.ai"
               },
               {
                 "name": "NAMESPACE",
