@@ -28,11 +28,11 @@
             "env": [
               {
                 "name": "DOMAINS",
-                "value": "app.staging.paradesystems.com lineage-test-stage.drayapp.com"
+                "value": "api.lc.stage.parade.ai api.email.stage.parade.ai api.capacity.stage.parade.ai"
               },
               {
                 "name": "EMAIL",
-                "value": "anthony@draytechnologies.com"
+                "value": "eng@parade.ai"
               },
               {
                 "name": "NAMESPACE",
@@ -40,7 +40,7 @@
               },
               {
                 "name": "LETSENCRYPT_ENDPOINT",
-                "value": "https://acme-staging.api.letsencrypt.org/directory"
+                "value": "https://acme-v01.api.letsencrypt.org/directory"
               }
             ],
             "ports": [
