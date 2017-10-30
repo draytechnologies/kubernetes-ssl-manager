@@ -1,0 +1,13 @@
+.git
+*.pyc
+__pycache__
+*.md
+deploy/
+
+*.un~
+*.swp
+
+*.rdb
+.idea
+.DS_Store
+secrets
