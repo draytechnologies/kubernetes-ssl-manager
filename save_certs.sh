@@ -23,13 +23,13 @@ MAIN_DOMAIN=${DOMAIN_ARRAY[0]}
 for DOMAIN in $DOMAINS; do
   SECRET_NAME="$SECRET_PREFIX.$DOMAIN"
 
-  CERT=$(cat $CERT_LOCATION/$MAIN_DOMAIN/fullchain.pem | base64 --wrap=0)
-  KEY=$(cat $CERT_LOCATION/$MAIN_DOMAIN/privkey.pem | base64 --wrap=0)
+  CERT=$(cat $CERT_LOCATION/$DOMAIN/fullchain.pem | base64 --wrap=0)
+  KEY=$(cat $CERT_LOCATION/$DOMAIN/privkey.pem | base64 --wrap=0)
   DHPARAM=$(openssl dhparam 2048 | base64 --wrap=0)
 
   NAMESPACE=${NAMESPACE:-default}
 
-  EXPIRE_DATE=$(openssl x509 -enddate -noout -in $CERT_LOCATION/$MAIN_DOMAIN/fullchain.pem | awk -F "=" '{print $2}' | base64 --wrap=0)
+  EXPIRE_DATE=$(openssl x509 -enddate -noout -in $CERT_LOCATION/$DOMAIN/fullchain.pem | awk -F "=" '{print $2}' | base64 --wrap=0)
 
   kubectl get secrets --namespace $NAMESPACE $SECRET_NAME && ACTION=replace || ACTION=create;
 
