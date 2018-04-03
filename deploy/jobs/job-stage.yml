@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: PROJECT_NAME-refresh-certs-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: PROJECT_NAME-refresh-certs-job
+        image: us.gcr.io/dray-app/PROJECT_NAME:PROJECT_VERSION
+        command: ["./refresh_certs.sh"]
+        env:
+        - name: "DOMAINS"
+          value: "api.lc.stage.parade.ai api.email.stage.parade.ai api.capacity.stage.parade.ai"
+        - name: "EMAIL"
+          value: "eng@parade.ai"
+        - name: "NAMESPACE"
+          value: "DEPLOY_TYPE"
+        - name: "LETSENCRYPT_ENDPOINT"
+          value: "https://acme-v01.api.letsencrypt.org/directory"
+      restartPolicy: Never
+
