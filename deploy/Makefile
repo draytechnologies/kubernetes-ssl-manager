@@ -43,3 +43,8 @@ new: context
 
 .PHONY: promote
 promote: rc rolling
+
+.PHONY: cronjobs
+cronjobs: context
+	cat jobs/cronjobs-$(DEPLOY_TYPE).yml | sed s/PROJECT_NAME/$(PROJECT_NAME)/g | sed s/PROJECT_VERSION/$(VERSION)/g | sed s/DEPLOY_TYPE/$(DEPLOY_TYPE)/g | kubectl delete -f - --ignore-not-found=true
+	cat jobs/cronjobs-$(DEPLOY_TYPE).yml | sed s/PROJECT_NAME/$(PROJECT_NAME)/g | sed s/PROJECT_VERSION/$(VERSION)/g | sed s/DEPLOY_TYPE/$(DEPLOY_TYPE)/g | kubectl create -f -
