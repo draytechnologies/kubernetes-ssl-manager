@@ -11,7 +11,7 @@ spec:
         command: ["./refresh_certs.sh"]
         env:
         - name: "DOMAINS"
-          value: "api.lc.stage.parade.ai api.email.stage.parade.ai api.capacity.stage.parade.ai"
+          value: "api.email.stage.parade.ai api.capacity.stage.parade.ai"
         - name: "EMAIL"
           value: "eng@parade.ai"
         - name: "NAMESPACE"

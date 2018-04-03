@@ -14,14 +14,12 @@ if [ -z "$EMAIL" ]; then
 fi
 
 domain_args=""
-for i in "${DOMAINS[@]}"
+for domain in "${DOMAINS[@]}"
 do
-   domain_args="$domain_args -d $i"
-   # do whatever on $i
+    certbot certonly \
+        --webroot -w /letsencrypt/challenges/ \
+        --text --renew-by-default --agree-tos \
+        -d $domain \
+        --email=$EMAIL
 done
 
-certbot certonly \
-    --webroot -w /letsencrypt/challenges/ \
-    --text --renew-by-default --agree-tos \
-      $domain_args \
-     --email=$EMAIL
