@@ -28,7 +28,7 @@
             "env": [
               {
                 "name": "DOMAINS",
-                "value": "api.email.parade.ai parade.ai api.geodude.parade.ai api.census.parade.ai api.source-query.parade.ai"
+                "value": "api.email.parade.ai parade.ai api.geodude.parade.ai api.census.parade.ai api.source-query.parade.ai api.capacity.parade.ai"
               },
               {
                 "name": "EMAIL",
