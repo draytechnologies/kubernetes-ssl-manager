@@ -1,6 +1,6 @@
 FROM nginx:1.11
 
-ENV KUBECTL_VERSION v1.9.4
+ENV KUBECTL_VERSION v1.10.9
 
 RUN apt-get update && apt-get install -y wget cron bc
 
